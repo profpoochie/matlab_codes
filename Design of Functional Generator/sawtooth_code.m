@@ -7,14 +7,15 @@ clc;        % clear command window
 t = linspace(0,0.3,10000);  % definition of t form 0 to 4*pi
 f = 10;
 w = 2*pi*f;
-gr = 0;
-gr100 = sawtooth(gr,w,t,10000);   %assume with perfect precision
+C0 = 0;
+gr100 = sawtooth(C0,w,t,10000);   %assume with perfect precision
 grid on;
 
 
 % function for Fourier Series computation
 
-function gr = sawtooth(gr,w,t,last)
+function gr = sawtooth(C0,w,t,last)
+    gr=C0;
     for i=1:last
         % odd condition
         if (rem(i,2)==1), C=-2/(i*pi); end
