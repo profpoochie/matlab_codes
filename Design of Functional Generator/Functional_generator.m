@@ -27,7 +27,7 @@ while t_endtime <= 0
 end
 
 % computation for t vector
-t = linspace(0,t_endtime,10000);
+t = linspace(0,t_endtime,1000);
 % computation of angular velocity
 w = 2*pi*f;
 % this is number of fourier iteration. Please adjust for higher resolution
@@ -112,6 +112,7 @@ gr = C0;
         end
     end
     gr = amp*gr;
+    gr = medfilt1(gr,3);
     plot(t,gr);
 end
 % function Sawtooth waveform generator
@@ -125,6 +126,7 @@ function gr = sawtooth(C0,amp,w,t,last)
         gr = gr+C*sin(w*i.*t);
     end
     gr = amp*gr;
+    gr = medfilt1(gr,3);
     plot(t,gr);
 end
 % function Triangular waveform generator
@@ -135,6 +137,7 @@ function gr = triagular(C0,amp,w,t,last)
         gr = gr+C*cos(w*i.*t);
     end
     gr = amp*gr;
+    gr = medfilt1(gr,3);
     plot(t,gr);
 end
 
